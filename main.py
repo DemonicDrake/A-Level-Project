@@ -36,7 +36,8 @@ if __name__ == "__main__":
 
     timer.begin()
 
-    screen = pygame.display.set_mode((constants.SCREEN_WIDTH, constants.SCREEN_HEIGHT))
+    # screen = pygame.display.set_mode((constants.SCREEN_WIDTH, constants.SCREEN_HEIGHT))
+    screen = pygame.display.set_mode((get_monitors()[0].width, get_monitors()[0].height), FULLSCREEN)
 
     running = True
     while running:
@@ -64,10 +65,14 @@ if __name__ == "__main__":
             constants.x -= constants.VELOCITY * timer.get_frame_duration()
         if keys[pygame.K_RIGHT]:
             constants.x += constants.VELOCITY * timer.get_frame_duration()
-        if keys[pygame.K_UP]:
-            constants.y -= constants.VELOCITY * timer.get_frame_duration()
-        if keys[pygame.K_DOWN]:
-            constants.y += constants.VELOCITY * timer.get_frame_duration()
+        # if keys[pygame.K_UP]:
+        #    constants.y -= constants.VELOCITY * timer.get_frame_duration()
+        # if keys[pygame.K_DOWN]:
+        #    constants.y += constants.VELOCITY * timer.get_frame_duration()
+        if keys[pygame.K_c]:
+            # character jumps
+
+
 
         # screen edge collision check
         if screen.get_flags() & FULLSCREEN:
