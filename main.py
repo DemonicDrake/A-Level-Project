@@ -4,6 +4,7 @@ from pygame.locals import *
 from screeninfo import get_monitors
 import constants
 
+bg = pygame.image.load('bg.png')
 
 class FpsClock:
     def __init__(self):
@@ -69,8 +70,8 @@ if __name__ == "__main__":
         #    constants.y -= constants.VELOCITY * timer.get_frame_duration()
         # if keys[pygame.K_DOWN]:
         #    constants.y += constants.VELOCITY * timer.get_frame_duration()
-        if keys[pygame.K_c]:
-            # character jumps
+        # if keys[pygame.K_c]:
+        # character jumps
 
 
 
