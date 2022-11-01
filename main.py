@@ -4,7 +4,7 @@ from pygame.locals import *
 from screeninfo import get_monitors
 import constants
 
-bg = pygame.image.load('bg.png')
+bg = pygame.image.load('assets/City Background/Sky.png')
 
 class FpsClock:
     def __init__(self):
@@ -95,5 +95,6 @@ if __name__ == "__main__":
             if constants.y + constants.HEIGHT > constants.SCREEN_HEIGHT:
                 constants.y = constants.SCREEN_HEIGHT - constants.HEIGHT
 
+        screen.blit(bg, (0, 0))
         pygame.draw.rect(screen, (255, 255, 255), (constants.x, constants.y, constants.WIDTH, constants.HEIGHT))
         pygame.display.update()
