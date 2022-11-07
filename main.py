@@ -1,55 +1,30 @@
 import pygame
+from settings import *
+from tiles import Tile
+from level import Level
 import sys
 from pygame.locals import *
 from screeninfo import get_monitors
 import constants
 
-bg = pygame.image.load('assets/City Background/Sky.png')
-bg = pygame.transform.scale(bg, (get_monitors()[0].width * 1.5, get_monitors()[0].height * 1.5))
-bg1 = pygame.image.load('assets/City Background/City Background.png')
-bg1 = pygame.transform.scale(bg1, (get_monitors()[0].width * 1.5, get_monitors()[0].height * 1.5))
-bg2 = pygame.image.load('assets/City Background/City Foreground.png')
-bg2 = pygame.transform.scale(bg2, (get_monitors()[0].width * 1.5, get_monitors()[0].height * 1.5))
-
-
-class FpsClock:
-    def __init__(self):
-        self.frame_duration = 0
-        self.this_frame_time = 0
-        self.last_frame_time = 0
-        return
-
-    def tick(self):
-        self.this_frame_time = self.get_current_time()
-        self.frame_duration = (self.this_frame_time - self.last_frame_time) / 1000
-        self.last_frame_time = self.this_frame_time
-        return
-
-    def get_frame_duration(self):
-        return self.frame_duration
-
-    def get_current_time(self):
-        return pygame.time.get_ticks()
-
-    def begin(self):
-        self.last_frame_time = self.get_current_time()
-        return
-
 
 if __name__ == "__main__":
     pygame.init()
 
-    timer = FpsClock()
-
-    timer.begin()
-
     # screen = pygame.display.set_mode((constants.SCREEN_WIDTH, constants.SCREEN_HEIGHT))
     screen = pygame.display.set_mode((get_monitors()[0].width, get_monitors()[0].height), FULLSCREEN)
+    clock = pygame.time.Clock()
+    level = Level(map, screen)
+
+    bg = pygame.image.load('assets/City Background/Sky.png')
+    bg = pygame.transform.scale(bg, (get_monitors()[0].width * 1.5, get_monitors()[0].height * 1.5))
+    bg1 = pygame.image.load('assets/City Background/City Background.png')
+    bg1 = pygame.transform.scale(bg1, (get_monitors()[0].width * 1.5, get_monitors()[0].height * 1.5))
+    bg2 = pygame.image.load('assets/City Background/City Foreground.png')
+    bg2 = pygame.transform.scale(bg2, (get_monitors()[0].width * 1.5, get_monitors()[0].height * 1.5))
 
     running = True
     while running:
-        timer.tick()
-
         screen.fill((0, 0, 0))
 
         for event in pygame.event.get():
@@ -69,13 +44,13 @@ if __name__ == "__main__":
         # movement check
         keys = pygame.key.get_pressed()
         if keys[pygame.K_LEFT]:
-            constants.x -= constants.VELOCITY * timer.get_frame_duration()
+            constants.x -= constants.VELOCITY
         if keys[pygame.K_RIGHT]:
-            constants.x += constants.VELOCITY * timer.get_frame_duration()
+            constants.x += constants.VELOCITY
         # if keys[pygame.K_UP]:
-        #    constants.y -= constants.VELOCITY * timer.get_frame_duration()
+        #    constants.y -= constants.VELOCITY
         # if keys[pygame.K_DOWN]:
-        #    constants.y += constants.VELOCITY * timer.get_frame_duration()
+        #    constants.y += constants.VELOCITY
         # if keys[pygame.K_c]:
         # character jumps
 
@@ -101,8 +76,11 @@ if __name__ == "__main__":
             if constants.y + constants.HEIGHT > constants.SCREEN_HEIGHT:
                 constants.y = constants.SCREEN_HEIGHT - constants.HEIGHT
 
-        #screen.blit(bg, (0, 0))
+        screen.blit(bg, (0, 0))
         screen.blit(bg1, (0, 0))
         screen.blit(bg2, (0, 0))
+        level.run()
         pygame.draw.rect(screen, (255, 255, 255), (constants.x, constants.y, constants.WIDTH, constants.HEIGHT))
         pygame.display.update()
+        clock.tick(60)
+
