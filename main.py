@@ -41,46 +41,10 @@ if __name__ == "__main__":
             #         else:
             #             pygame.display.set_mode((get_monitors()[0].width, get_monitors()[0].height), FULLSCREEN)
 
-        # movement check
-        keys = pygame.key.get_pressed()
-        if keys[pygame.K_LEFT]:
-            constants.x -= constants.VELOCITY
-        if keys[pygame.K_RIGHT]:
-            constants.x += constants.VELOCITY
-        # if keys[pygame.K_UP]:
-        #    constants.y -= constants.VELOCITY
-        # if keys[pygame.K_DOWN]:
-        #    constants.y += constants.VELOCITY
-        # if keys[pygame.K_c]:
-        # character jumps
-
-
-
-        # screen edge collision check
-        if screen.get_flags() & FULLSCREEN:
-            if constants.x < 0:
-                constants.x = 0
-            if constants.x + constants.WIDTH > get_monitors()[0].width:
-                constants.x = get_monitors()[0].width - constants.WIDTH
-            if constants.y < 0:
-                constants.y = 0
-            if constants.y + constants.HEIGHT > get_monitors()[0].height:
-                constants.y = get_monitors()[0].height - constants.HEIGHT
-        else:
-            if constants.x < 0:
-                constants.x = 0
-            if constants.x + constants.WIDTH > constants.SCREEN_WIDTH:
-                constants.x = constants.SCREEN_WIDTH - constants.WIDTH
-            if constants.y < 0:
-                constants.y = 0
-            if constants.y + constants.HEIGHT > constants.SCREEN_HEIGHT:
-                constants.y = constants.SCREEN_HEIGHT - constants.HEIGHT
-
         screen.blit(bg, (0, 0))
         screen.blit(bg1, (0, 0))
         screen.blit(bg2, (0, 0))
         level.run()
-        pygame.draw.rect(screen, (255, 255, 255), (constants.x, constants.y, constants.WIDTH, constants.HEIGHT))
         pygame.display.update()
         clock.tick(60)
 

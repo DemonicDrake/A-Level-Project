@@ -13,7 +13,7 @@ map = [
 '                         XXXXX',
 '                              ',
 'XXXXX                         ',
-'                              ',
+'              p               ',
 '                              ',
 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX']
 
