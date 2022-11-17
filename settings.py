@@ -1,20 +1,20 @@
 map = [
 '                              ',
+'    XXXX                      ',
 '                              ',
 '                              ',
+'                   XXXXXX     ',
 '                              ',
 '                              ',
-'                              ',
-'                              ',
-'                              ',
+'      XXXXX                   ',
 '                              ',
 '                              ',
 '                              ',
 '                         XXXXX',
 '                              ',
 'XXXXX                         ',
-'              p               ',
 '                              ',
+'              p               ',
 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX']
 
 tile_size = 64
