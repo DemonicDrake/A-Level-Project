@@ -3,6 +3,7 @@ from tiles import Tile
 from settings import tile_size, screen_height
 from player import Player
 
+
 class Level:
     def __init__(self, level_data, surface):
         self.display_surface = surface
@@ -44,7 +45,7 @@ class Level:
         player = self.player.sprite
         player.rect.x += player.direction.x * player.speed
 
-        for sprite in self.tiles():
+        for sprite in self.tiles:
             if sprite.rect.colliderect(player.rect):
                 if player.direction.x > 0:
                     player.rect.right = sprite.rect.left
