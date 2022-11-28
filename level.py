@@ -31,12 +31,15 @@ class Level:
         player_y = player.rect.centery
         direction_y = player.direction.y
 
+######### IS BROKEN HERE #########
         if player_y < screen_height / 4 and direction_y < 0:
-            self.world_shift = 8
-            player.speed = 0
+            ##THIS BIT SPECIFICALY##
+            self.world_shift = -player.direction.y
+            player.direction.y = 0
+            ## ------- ##
         elif player_y > screen_height - (screen_height / 4) and direction_y > 0:
-            self.world_shift = -8
-            player.speed = 0
+            self.world_shift = -player.world_direction.y
+            player.direction.y = 0
         else:
             self.world_shift = 0
             player.speed = 8

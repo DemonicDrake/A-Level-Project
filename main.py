@@ -8,7 +8,7 @@ from screeninfo import get_monitors
 
 pygame.init()
 
-screen = pygame.display.set_mode((get_monitors()[0].width, get_monitors()[0].height), FULLSCREEN)
+screen = pygame.display.set_mode((get_monitors()[0].width, get_monitors()[0].height))
 clock = pygame.time.Clock()
 level = Level(map, screen)
 
