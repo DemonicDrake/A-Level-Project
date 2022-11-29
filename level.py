@@ -26,23 +26,22 @@ class Level:
                     player_sprite = Player((x, y))
                     self.player.add(player_sprite)
 
+    ######### IS BROKEN HERE #########
     def scroll_y(self):
         player = self.player.sprite
         player_y = player.rect.centery
         direction_y = player.direction.y
-
-######### IS BROKEN HERE #########
         if player_y < screen_height / 4 and direction_y < 0:
-            ##THIS BIT SPECIFICALY##
             self.world_shift = -player.direction.y
             player.direction.y = 0
-            ## ------- ##
         elif player_y > screen_height - (screen_height / 4) and direction_y > 0:
             self.world_shift = -player.world_direction.y
             player.direction.y = 0
         else:
             self.world_shift = 0
-            player.speed = 8
+            player.world_direction.y = 0
+    ######### -------------- #########
+
 
     def horizontal_movement_collision(self):
         player = self.player.sprite
