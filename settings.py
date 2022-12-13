@@ -15,6 +15,7 @@ map = [
 'XXXXX                         ',
 '                              ',
 '              p               ',
+'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX']
 
 tile_size = 64
