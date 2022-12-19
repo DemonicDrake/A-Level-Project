@@ -34,6 +34,7 @@ class Level:
         if player_y < screen_height / 4 and direction_y < 0:
             self.world_shift = -player.world_direction.y
             player.direction.y = 0
+            player.world_direction.y = 0
         elif player_y > screen_height - (screen_height / 4) and direction_y > 0:
             self.world_shift = -player.world_direction.y
             player.direction.y = 0
@@ -49,9 +50,9 @@ class Level:
 
         for sprite in self.tiles.sprites():
             if sprite.rect.colliderect(player.rect):
-                if player.direction.x < 0:
+                if player.direction.x < 0 and player.direction.y < 0:
                     player.rect.left = sprite.rect.right
-                elif player.direction.x > 0:
+                elif player.direction.x > 0 and player.direction.y < 0:
                     player.rect.right = sprite.rect.left
 
     def vertical_movement_collision(self):
@@ -60,12 +61,14 @@ class Level:
 
         for sprite in self.tiles:
             if sprite.rect.colliderect(player.rect):
-                if player.direction.y > 0:
+                if player.direction.y > 0 and player.world_direction.y > 0: # falling
                     player.rect.bottom = sprite.rect.top
                     player.direction.y = 0
-                elif player.direction.y < 0:
+                    player.world_direction.y = 0
+                elif player.direction.y < 0 and player.world_direction.y < 0: # jumping
                     player.rect.top = sprite.rect.bottom
                     player.direction.y = 0
+                    player.world_direction.y = 0
 
 
     def run(self):
