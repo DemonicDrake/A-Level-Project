@@ -34,10 +34,10 @@ class Level:
         if player_y < screen_height / 4 and direction_y < 0:
             self.world_shift = -player.world_direction.y
             player.direction.y = 0
-            player.world_direction.y = 0
         elif player_y > screen_height - (screen_height / 4) and direction_y > 0:
             self.world_shift = -player.world_direction.y
             player.direction.y = 0
+
         else:
             self.world_shift = 0
             #player.world_direction.y = 0
